@@ -1,3 +1,4 @@
+'use strict';
 // Global variables beed used: GameData
 
 // All characters' prototype
@@ -107,7 +108,6 @@ var ExWife = function (player, sprite) {
 ExWife.speeches = [
     'Still love U~',
     'Come back!',
-    '🐂'
 ];
 ExWife.prototype = Object.create(Mover.prototype);
 ExWife.prototype.update = function (dt) {
