@@ -111,21 +111,4 @@
         isReady: isReady,
     };
 
-    // Add a global variable GameData for convenience
-    var data = {
-        stoneRows: 3,
-        grassRows: 2,
-        rowHeight: 83,
-
-        numCols: 5,
-        colWidth: 101,
-        // For beauty purpose
-        topSpace: 12,
-        bottomSpace: 100,
-    };
-    // Add some flexibility
-    data.numRows = 1 + data.stoneRows + data.grassRows;
-    data.height = data.topSpace + data.rowHeight * data.numRows + data.bottomSpace;
-    data.width = data.colWidth * data.numCols;
-    window.GameData = data;
 })();
