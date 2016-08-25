@@ -6,7 +6,7 @@ This arcade game is a variation of the classic frogger arcade game.
 Check this [site](https://donaldshen.github.io/arcade-game). Or you can clone this repository to your computer and then open the index.html file.
 
 ## How to play it
-Using the arrow keys to move the player. Your target is trying to get as much score as you can. This game has no time limit.
+Using the arrow keys to move the player and space to pause the game. Your target is trying to get as much score as you can. This game has no time limit.
 
 ### Tips
 There are two ways to increase your score:
