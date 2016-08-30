@@ -11,8 +11,8 @@
     * set the canvas elements height/width and add it to the DOM.
     */
     var canvas = document.createElement('canvas');
-    canvas.width = BOARD.width;
-    canvas.height = BOARD.height;
+    canvas.width = board.width;
+    canvas.height = board.height;
     document.body.appendChild(canvas);
 
     var ctx = canvas.getContext('2d');
@@ -153,7 +153,7 @@
     * Check if play reach the top of the board.
     */
     function checkIfWin() {
-        if (player.y < BOARD.topSpace) {
+        if (player.y < board.topSpace) {
             score += 100;
             levelUp();
             player.relocate();
@@ -199,10 +199,10 @@
     var rowImages = [
         'images/water-block.png',   // Top row is water
     ];
-    for (var i = 0; i < BOARD.stoneRows; i++) {
+    for (var i = 0; i < board.stoneRows; i++) {
         rowImages.push('images/stone-block.png');
     }
-    for (var i = 0; i < BOARD.grassRows; i++) {
+    for (var i = 0; i < board.grassRows; i++) {
         rowImages.push('images/grass-block.png');
     }
     /**
@@ -247,9 +247,9 @@
     }
 
     function renderBackground() {
-        for (var row = 0; row < BOARD.numRows; row++) {
-            for (var col = 0; col < BOARD.numCols; col++) {
-                ctx.drawImage(Resources.get(rowImages[row]), col * BOARD.colWidth, BOARD.topSpace + row * BOARD.rowHeight);
+        for (var row = 0; row < board.numRows; row++) {
+            for (var col = 0; col < board.numCols; col++) {
+                ctx.drawImage(Resources.get(rowImages[row]), col * board.colWidth, board.topSpace + row * board.rowHeight);
             }
         }
     }

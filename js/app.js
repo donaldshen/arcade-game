@@ -1,16 +1,16 @@
 'use strict';
 /**
 * @file Contains all the classes for the game. Examples include Gem, Bug, ExWife, Player.
-* Global variables beed used: BOARD
+* Global variables beed used: board
 * @author Donald Shen <donald930224@hotmail.com>
 */
 
 
 /**
-* Board data.
+* board data.
 * @global
 */
-const BOARD = {
+const board = {
     stoneRows: 3,
     grassRows: 2,
     rowHeight: 83,
@@ -22,9 +22,9 @@ const BOARD = {
     bottomSpace: 100,
 };
 // Add some flexibility
-BOARD.numRows = 1 + BOARD.stoneRows + BOARD.grassRows;
-BOARD.height = BOARD.topSpace + BOARD.rowHeight * BOARD.numRows + BOARD.bottomSpace;
-BOARD.width = BOARD.colWidth * BOARD.numCols;
+board.numRows = 1 + board.stoneRows + board.grassRows;
+board.height = board.topSpace + board.rowHeight * board.numRows + board.bottomSpace;
+board.width = board.colWidth * board.numCols;
 
 /**
 * All characters' prototype
@@ -34,9 +34,9 @@ var Character = function () {
     // Most characters only run inside the board
     this.border = {
         left: 0,
-        right: BOARD.width - BOARD.colWidth,
+        right: board.width - board.colWidth,
         top: 0,
-        bottom: (BOARD.numRows - 1) * BOARD.rowHeight,
+        bottom: (board.numRows - 1) * board.rowHeight,
     };
 }
 /**
@@ -61,8 +61,8 @@ var Gem = function (type) {
 Gem.prototype = Object.create(Character.prototype);
 // Gem just scatter on board
 Gem.prototype.relocate = function () {
-    this.x = Math.floor(Math.random() * BOARD.numCols) * BOARD.colWidth;
-    this.y = Math.floor(Math.random() * BOARD.numRows) * BOARD.rowHeight;
+    this.x = Math.floor(Math.random() * board.numCols) * board.colWidth;
+    this.y = Math.floor(Math.random() * board.numRows) * board.rowHeight;
 };
 
 /**
@@ -135,7 +135,7 @@ Bug.prototype = Object.create(Mover.prototype);
 Bug.prototype.update = function (dt) {
     // Bug doesn't use move method, it just run from left to right over and over
     this.x += this.speed * dt;
-    if (this.x > (BOARD.width + 2 * BOARD.colWidth)) {
+    if (this.x > (board.width + 2 * board.colWidth)) {
         this.relocate();
     }
 };
@@ -143,8 +143,8 @@ Bug.prototype.update = function (dt) {
 * Begin on the left outside the board.
 */
 Bug.prototype.relocate = function () {
-    this.x = -BOARD.colWidth;
-    this.y = Math.ceil(Math.random() * BOARD.stoneRows) * BOARD.rowHeight;
+    this.x = -board.colWidth;
+    this.y = Math.ceil(Math.random() * board.stoneRows) * board.rowHeight;
 };
 
 /**
@@ -159,7 +159,7 @@ var ExWife = function (player, sprite) {
     this.ex = player;
     // Exwife move slow. Lucky
     this.speed = 10;
-    this.border['top'] = this.border['bottom'] - BOARD.rowHeight * (BOARD.grassRows - 1);
+    this.border['top'] = this.border['bottom'] - board.rowHeight * (board.grassRows - 1);
     // Evil bitch
     this.speech = ExWife.speeches[Math.floor(Math.random() * ExWife.speeches.length)];
     this.relocate();
@@ -185,9 +185,9 @@ ExWife.prototype.update = function (dt) {
 ExWife.prototype.relocate = function () {
     // Could be coming from both side
     if (Math.random() > 0.5) {
-        this.x = -BOARD.colWidth;
+        this.x = -board.colWidth;
     } else {
-        this.x = BOARD.width;
+        this.x = board.width;
     }
     this.y = this.border.bottom;
 };
@@ -224,6 +224,6 @@ Player.prototype.update = function (dt) {
 * Begin on the bottom of the board.
 */
 Player.prototype.relocate = function () {
-    this.x = Math.floor(Math.random() * BOARD.numCols) * BOARD.colWidth;
+    this.x = Math.floor(Math.random() * board.numCols) * board.colWidth;
     this.y = this.border.bottom + 50;
 };
