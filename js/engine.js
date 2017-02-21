@@ -175,7 +175,7 @@
 
         // Make game harder by adding enemy or increasing enemies' speed
         ram = Math.random();
-        if (ram > 0.6 && allEnemies.length < 10) {
+        if (ram > 0.6 && allEnemies.length < 15) {
             allEnemies.push(new Bug());
         } else {
             allEnemies.forEach(function (e) {
